@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="p1" class="com.com.com.atguigu.pojo.Person">
+        <property name="id" value="1"/>
+        <property name="name" value="ari"/>
+        <property name="age" value="18"/>
+        <property name="phone" value="18615543651"/>
+    </bean>
+
+    <bean id="p2" class="com.com.com.atguigu.pojo.Person">
+        <property name="id" value="2"/>
+        <property name="name" value="kaisa"/>
+        <property name="age" value="18"/>
+        <property name="phone" value="123456788901"/>
+    </bean>
+
+    <bean id="p3" class="com.com.com.atguigu.pojo.Person">
+        <constructor-arg index="0" value="3"/>
+        <constructor-arg index="1" value="zoe"/>
+        <constructor-arg index="2" value="20"/>
+        <constructor-arg index="3" value="21345678909"/>
+    </bean>
+
+    <bean id="p4" class="com.com.com.atguigu.pojo.Person"
+          p:id="4" p:name="pnamespace" p:age="11"
+    />
+
+    <bean id="p5" class="com.com.com.atguigu.pojo.Person">
+        <property name="id" value="5"/>
+        <property name="name" value="nullTest"/>
+        <property name="phone">
+            <null></null>
+        </property>
+    </bean>
+
+    <bean id="car1" class="com.com.com.atguigu.pojo.Car">
+        <property name="id" value="1234"/>
+        <property name="name" value="car1234"/>
+    </bean>
+
+    <bean id="p6" class="com.com.com.atguigu.pojo.Person">
+        <property name="id" value="6"/>
+        <property name="car" ref="car1"/>
+    </bean>
+
+    <bean id="p7" class="com.com.com.atguigu.pojo.Person">
+        <property name="id" value="7"/>
+        <property name="car">
+            <bean id="car2" class="com.com.com.atguigu.pojo.Car">
+                <property name="id" value="2233"/>
+                <property name="name" value="car2233"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="p8" class="com.com.com.atguigu.pojo.Person">
+        <property name="id" value="8"/>
+        <property name="list">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+                <value>list3</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="p9" class="com.com.com.atguigu.pojo.Person">
+        <property name="id" value="9"/>
+        <property name="map">
+            <map>
+                <entry key="k1" value="v1"/>
+                <entry key="k2" value="v2"/>
+                <entry key="k3" value="v3"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="p10" class="com.com.com.atguigu.pojo.Person">
+        <property name="id" value="10"/>
+        <property name="props">
+            <props>
+                <prop key="k1">v1</prop>
+                <prop key="k2">v2</prop>
+                <prop key="k3">v3</prop>
+            </props>
+        </property>
+    </bean>
+
+    <util:list id="list01">
+        <value>l1</value>
+        <value>l2</value>
+    </util:list>
+    <bean id="p11" class="com.com.com.atguigu.pojo.Person">
+        <property name="id" value="11"/>
+        <property name="list" ref="list01"/>
+    </bean>
+
+    <bean id="car3" class="com.com.com.atguigu.pojo.Car">
+        <property name="id" value="999"/>
+        <property name="name" value="car999"/>
+    </bean>
+    <bean id="p12" class="com.com.com.atguigu.pojo.Person">
+        <property name="id" value="12"/>
+        <property name="car" ref="car3"/>
+        <property name="car.name" value="123"/>
+    </bean>
+
+    <bean id="p13" class="com.com.com.atguigu.factory.PersonFactory" factory-method="createPerson">
+    </bean>
+
+    <bean class="com.com.com.atguigu.factory.PersonFactory" id="personFactory"/>
+    <bean id="p14" factory-bean="personFactory" factory-method="createPerson2"/>
+
+    <bean id="p15" class="com.com.com.atguigu.factory.PersonFactoryBean">
+    </bean>
+
+    <bean id="parent" class="com.com.com.atguigu.pojo.Person" abstract="true">
+        <property name="id" value="100"/>
+        <property name="name" value="这是父配置"/>
+        <property name="age" value="100"/>
+        <property name="phone" value="100"/>
+    </bean>
+    <bean id="p16" class="com.com.com.atguigu.pojo.Person" parent="parent">
+        <property name="id" value="16"/>
+    </bean>
+
+    <bean id="p17" class="com.com.com.atguigu.pojo.Person" scope="prototype">
+        <property name="id" value="17"/>
+    </bean>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</beans>
